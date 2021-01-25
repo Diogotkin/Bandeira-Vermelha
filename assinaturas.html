@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assinaturas</title>
+  <link rel="stylesheet" href="mystyle.css">
+</head>
+<body>
+  <section id="showcase"></section>
+
+  <nav id="navbar">
+      <div class="container">
+          <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="noticias.html">Hoje nas notícias</a></li>
+              <li><a href="cronicas.html">Crónicas</a></li>
+              <li><a href="sobre.html">Sobre</a></li>
+              <li><a href="assinaturas.html">Assinaturas</a></li>
+          </ul>
+      </div>
+      <div class="container">
+          <p><a href="login.html">Login/Register</a></p>
+      </div>
+  </nav>
+
+  <header id="main-header">
+      <div class="container">
+          <a href=""></a>
+          <h1>Jornal Bandeira Vermelha</h1>
+          <p>O jornal dos trabalhadores, pela verdade e socialismo</p>
+      </div>
+  </header>
+
+  <section id="main-section">
+        <article>
+            <div class="container">
+            <h3>Torne-se assinante hoje para 
+                ajudar os jornalistas a 
+                contar as verdades</h3>
+                <p class="introduction">Apenas 0.50€/Semana</p>
+                <p class="introduction">Assina agora e seras notificado sempre que uma noticia for lançada no nosso website</p>
+            </div>
+        </article>
+          <div>
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" size="15">
+          </div>
+          <div>
+            <label for="username">Username:</label>
+            <input type="username" name="username" id="username" size="15">
+          </div>
+          <br>
+          <div>
+            <label for="terms">Aceito os termos de condições:</label>
+            <input type="checkbox" name="terms" id="terms">
+          </div>
+          <br>
+          <div>
+              <h4>Pagamento:</h4>
+              <p>Ao subscrever, concorda com os Termos de Venda, incluindo a Política de Cancelamento e Reembolso.
+              A sua subscrição renovar-se-á automaticamente e será cobrado com antecedência. Pode cancelar a qualquer momento.
+              O cancelamento entra em vigor no início do seu ciclo de faturação seguinte.</p>
+              <div id="smart-button-container">
+                <div style="text-align: center;">
+                  <div id="paypal-button-container"></div>
+                </div>
+              </div>
+            <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD" data-sdk-integration-source="button-factory"></script>
+            <script>
+              function initPayPalButton() {
+                paypal.Buttons({
+                  style: {
+                    shape: 'rect',
+                    color: 'gold',
+                    layout: 'vertical',
+                    label: 'paypal',
+                    
+                  },
+          
+                  createOrder: function(data, actions) {
+                    return actions.order.create({
+                      purchase_units: [{"amount":{"currency_code":"USD","value":1}}]
+                    });
+                  },
+          
+                  onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(details) {
+                      alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                    });
+                  },
+          
+                  onError: function(err) {
+                    console.log(err);
+                  }
+                }).render('#paypal-button-container');
+              }
+              initPayPalButton();
+            </script>
+          </div>
+  </section>
+
+  <footer id="main-footer">
+      <div class=container>
+          <h3>Segue-nos</h3>
+          <ul>
+              <li><a href="https://www.twitter.com/">Twitter</a></li>
+              <li><a href="https://www.facebook.com/">Facebook</a></li>
+          </ul>
+      </div>
+      <div class="container">
+          <p>&copy; Bandeira Vermelha</p>
+      </div>
+  </footer>
+</body>
+</html>
